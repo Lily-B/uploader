@@ -40,7 +40,7 @@
 
                 <form action="index.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <input type="hidden" name="MAX_FILE_SIZE" value="30000"/>
+                        <input type="hidden" name="MAX_FILE_SIZE" value="10000000"/>
                         <input type="file" id="exampleInputFile" name="file">
                     </div>
 
