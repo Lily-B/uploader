@@ -15,11 +15,9 @@ class Files
 
     }
 
-    private function checkBlackList($filename)
+    private function checkBlackList($filetype)
     {
-        $current_file_type = substr(strrchr($filename, '.'), 1);
-
-        if (!in_array(substr(strrchr($filename, '.'), 1), $this->blackList)) {
+        if (in_array($filetype, $this->blackList)) {
             return false;
         }
         return true;
@@ -28,7 +26,8 @@ class Files
 
     public function uploadFile($file)
     {
-        if ($this->checkBlackList($file['name'])) {
+        if ($this->checkBlackList($file['type'])) {
+		 
             if (move_uploaded_file($file['tmp_name'], $this->dir . $file['name'])) {
                 $this->DB->newFile($file['name']);
                 return true;
